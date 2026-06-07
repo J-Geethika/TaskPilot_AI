@@ -1,234 +1,106 @@
 <div class="dashboard">
 
   <!-- Animated Background -->
-  <div class="bg-circle circle1"></div>
-  <div class="bg-circle circle2"></div>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
 
   <!-- Sidebar -->
-  <aside class="sidebar">
+
+  <aside
+    class="sidebar"
+    [class.show]="sidebarOpen">
 
     <div class="logo">
       🚀 TaskPilot AI
     </div>
 
-    <nav>
+    <div class="menu-item active">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </div>
 
-      <div class="menu-item active" (click)="goDashboard()">
-  🏠 Dashboard
-</div>
+    <div class="menu-item">
+      <mat-icon>task</mat-icon>
+      Tasks
+    </div>
 
-<div class="menu-item" (click)="goTasks()">
-  ✅ Tasks
-</div>
+    <div class="menu-item">
+      <mat-icon>smart_toy</mat-icon>
+      AI Planner
+    </div>
 
-<div class="menu-item" (click)="goPlanner()">
-  🤖 AI Planner
-</div>
+    <div class="menu-item">
+      <mat-icon>analytics</mat-icon>
+      Analytics
+    </div>
 
-<div class="menu-item" (click)="goAnalytics()">
-  📊 Analytics
-</div>
-
-<div class="menu-item" (click)="goProfile()">
-  👤 Profile
-</div>
-
-      <div class="menu-item">
-        ⚙ Settings
-      </div>
-
-    </nav>
+    <div class="menu-item">
+      <mat-icon>person</mat-icon>
+      Profile
+    </div>
 
   </aside>
 
-  <!-- Main Content -->
+  <!-- Main Area -->
 
-  <main class="content">
+  <div class="main-content">
 
-    <!-- Top Bar -->
+    <mat-toolbar class="navbar">
 
-    <div class="topbar">
+      <button
+        mat-icon-button
+        (click)="toggleSidebar()">
 
-      
+        <mat-icon>menu</mat-icon>
+
+      </button>
+
+      <span class="title">
+        Dashboard
+      </span>
+
+      <span class="spacer"></span>
+
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+
+      <button mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
       <div>
 
-        <h1>Welcome Back, Geethika 👋</h1>
+        <h1>
+          Welcome Back, Geethika 👋
+        </h1>
 
         <p>
-          Manage your tasks smarter with AI.
+          Plan Smarter • Work Faster • Achieve More
         </p>
 
-      </div>
+        <button
+          mat-raised-button
+          class="hero-btn">
 
-      <button class="new-task-btn" (click)="createTask()">
-  + New Task
-</button>
+          Start Planning
 
-    </div>
-
-    <!-- Stats -->
-
-    <div class="stats">
-
-      <div class="stat-card">
-
-        <span>Total Tasks</span>
-
-        <h2>42</h2>
-
-      </div>
-
-      <div class="stat-card">
-
-        <span>Completed</span>
-
-        <h2>30</h2>
-
-      </div>
-
-      <div class="stat-card">
-
-        <span>Pending</span>
-
-        <h2>12</h2>
-
-      </div>
-
-      <div class="stat-card">
-
-        <span>Productivity</span>
-
-        <h2>86%</h2>
-
-      </div>
-
-    </div>
-
-    <!-- Productivity Chart 
-
-    <div class="chart-card">
-
-      <h2>Weekly Productivity</h2>
-
-      <div class="bars">
-
-        <div class="bar" style="height:65% "></div>
-
-        <div class="bar" style="height:90%"></div>
-
-        <div class="bar" style="height:55%"></div>
-
-        <div class="bar" style="height:75%"></div>
-
-        <div class="bar" style="height:85%"></div>
-
-        <div class="bar" style="height:100%"></div>
-
-        <div class="bar" style="height:70%"></div>
-
-      </div>
-
-    </div>-->
-
-<!--Weekly Tasks-->
- <div class="bottom-grid">
-
-      <!-- Recent Tasks -->
-
-      <div class="panel">
-
-        <h2>Weekly Productivity</h2>
-
-      <div class="bars">
-
-        <div class="bar" style="height:65% "></div>
-
-        <div class="bar" style="height:90%"></div>
-
-        <div class="bar" style="height:55%"></div>
-
-        <div class="bar" style="height:75%"></div>
-
-        <div class="bar" style="height:85%"></div>
-
-        <div class="bar" style="height:100%"></div>
-
-        <div class="bar" style="height:70%"></div>
-
-      </div>
-
-        
-
-        
-       
-      </div>
-
-      <!-- AI Assistant -->
-
-      <div class="panel">
-
-        <h2>AI Assistant</h2>
-
-        <p>
-          Generate study plans, project roadmaps,
-          reminders and productivity suggestions.
-        </p>
-
-        <button class="new-task-btn" (click)="openAIPlanner()">
-        Open AI Planner
         </button>
 
       </div>
 
-    </div>
-
-    <!-- Bottom Section -->
-
-    <div class="bottom-grid">
-
-      <!-- Recent Tasks -->
-
-      <div class="panel">
-
-        <h2>Recent Tasks</h2>
-
-        <div class="task">
-          Complete Angular Dashboard UI
-        </div>
-
-        <div class="task">
-          Create SQL Server Database
-        </div>
-
-        <div class="task">
-          Prepare Internship Report
-        </div>
-
-        <div class="task">
-          Learn Entity Framework
-        </div>
-
+      <div class="ai-orb">
+        🤖
       </div>
 
-      <!-- AI Assistant
+    </section>
 
-      <div class="panel">
-
-        <h2>AI Assistant</h2>
-
-        <p>
-          Generate study plans, project roadmaps,
-          reminders and productivity suggestions.
-        </p>
-
-        <button class="new-task-btn">
-          Open AI Planner
-        </button>
-
-      </div> -->
-
-    </div>
-
-  </main>
+  </div>
 
 </div>
