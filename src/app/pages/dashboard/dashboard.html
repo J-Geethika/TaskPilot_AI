@@ -1,14 +1,11 @@
 <div class="dashboard">
 
-  <!-- Animated Background -->
+  <!-- Background Blobs -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
 
   <!-- Sidebar -->
-
-  <aside
-    class="sidebar"
-    [class.show]="sidebarOpen">
+  <aside class="sidebar" [class.show]="sidebarOpen">
 
     <div class="logo">
       🚀 TaskPilot AI
@@ -41,18 +38,14 @@
 
   </aside>
 
-  <!-- Main Area -->
-
+  <!-- Main Content -->
   <div class="main-content">
 
+    <!-- Navbar -->
     <mat-toolbar class="navbar">
 
-      <button
-        mat-icon-button
-        (click)="toggleSidebar()">
-
+      <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
-
       </button>
 
       <span class="title">
@@ -72,7 +65,6 @@
     </mat-toolbar>
 
     <!-- Hero Section -->
-
     <section class="hero">
 
       <div>
@@ -100,6 +92,232 @@
       </div>
 
     </section>
+
+    <!-- Statistics -->
+    <div class="stats-section">
+
+      <mat-card class="stat-card">
+
+        <div class="stat-icon">📋</div>
+
+        <h3>Total Tasks</h3>
+
+        <h1>42</h1>
+
+        <p>+12% this week</p>
+
+      </mat-card>
+
+      <mat-card class="stat-card">
+
+        <div class="stat-icon">✅</div>
+
+        <h3>Completed</h3>
+
+        <h1>30</h1>
+
+        <p>+20% this week</p>
+
+      </mat-card>
+
+      <mat-card class="stat-card">
+
+        <div class="stat-icon">⏳</div>
+
+        <h3>Pending</h3>
+
+        <h1>12</h1>
+
+        <p>4 due today</p>
+
+      </mat-card>
+
+      <mat-card class="stat-card">
+
+        <div class="stat-icon">⚡</div>
+
+        <h3>Productivity</h3>
+
+        <h1>86%</h1>
+
+        <p>Excellent</p>
+
+      </mat-card>
+
+    </div>
+
+    <!-- Weekly Productivity -->
+    <div class="chart-container">
+
+      <div class="section-header">
+
+        <h2>📈 Weekly Productivity</h2>
+
+        <span>Last 7 Days</span>
+
+      </div>
+<!-- Bottom Section -->
+    <div class="bottom-grid">
+
+      <mat-card class="panel">
+
+        <div class="chart-card">
+
+        <div class="chart">
+
+          <div class="chart-column">
+            <div class="bar" style="height:65%"></div>
+            <span>Mon</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:85%"></div>
+            <span>Tue</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:55%"></div>
+            <span>Wed</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:95%"></div>
+            <span>Thu</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:75%"></div>
+            <span>Fri</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:100%"></div>
+            <span>Sat</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:80%"></div>
+            <span>Sun</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      </mat-card>
+
+      <mat-card class="panel ai-panel">
+
+        <h2>🤖 AI Assistant</h2>
+
+        <p>Good Morning Geethika!</p>
+
+        <p>You have 4 pending tasks today.</p>
+
+        <p>Productivity Score: 86%</p>
+
+        <button
+          mat-raised-button
+          color="primary">
+
+          Optimize My Day
+
+        </button>
+
+      </mat-card>
+
+    </div>
+      <!--<div class="chart-card">
+
+        <div class="chart">
+
+          <div class="chart-column">
+            <div class="bar" style="height:65%"></div>
+            <span>Mon</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:85%"></div>
+            <span>Tue</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:55%"></div>
+            <span>Wed</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:95%"></div>
+            <span>Thu</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:75%"></div>
+            <span>Fri</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:100%"></div>
+            <span>Sat</span>
+          </div>
+
+          <div class="chart-column">
+            <div class="bar" style="height:80%"></div>
+            <span>Sun</span>
+          </div>
+
+        </div>
+
+      </div>-->
+
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-grid">
+
+      <mat-card class="panel">
+
+        <h2>📋 Recent Tasks</h2>
+
+        <div class="task-item">
+          ✅ Dashboard UI Completed
+        </div>
+
+        <div class="task-item">
+          ✅ SQL Database Designed
+        </div>
+
+        <div class="task-item">
+          ⏳ API Integration
+        </div>
+
+        <div class="task-item">
+          ⏳ AI Planner Module
+        </div>
+
+      </mat-card>
+
+      <mat-card class="panel ai-panel">
+
+        <h2>🤖 AI Assistant</h2>
+
+        <p>Good Morning Geethika!</p>
+
+        <p>You have 4 pending tasks today.</p>
+
+        <p>Productivity Score: 86%</p>
+
+        <button
+          mat-raised-button
+          color="primary">
+
+          Optimize My Day
+
+        </button>
+
+      </mat-card>
+
+    </div>
 
   </div>
 
