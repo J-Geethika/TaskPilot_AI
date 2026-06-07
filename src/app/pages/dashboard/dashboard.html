@@ -1,324 +1,214 @@
 <div class="dashboard">
 
-  <!-- Background Blobs -->
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
+  <!-- Animated Background -->
+  <div class="bg-circle circle1"></div>
+  <div class="bg-circle circle2"></div>
 
   <!-- Sidebar -->
-  <aside class="sidebar" [class.show]="sidebarOpen">
+  <aside class="sidebar">
 
     <div class="logo">
       🚀 TaskPilot AI
     </div>
 
-    <div class="menu-item active">
-      <mat-icon>dashboard</mat-icon>
-      Dashboard
-    </div>
+    <nav>
 
-    <div class="menu-item">
-      <mat-icon>task</mat-icon>
-      Tasks
-    </div>
+      <div class="menu-item active" (click)="goDashboard()">
+        🏠 Dashboard
+      </div>
 
-    <div class="menu-item">
-      <mat-icon>smart_toy</mat-icon>
-      AI Planner
-    </div>
+      <div class="menu-item" (click)="goTasks()">
+        ✅ Tasks
+      </div>
 
-    <div class="menu-item">
-      <mat-icon>analytics</mat-icon>
-      Analytics
-    </div>
+      <div class="menu-item" (click)="goPlanner()">
+        🤖 AI Planner
+      </div>
 
-    <div class="menu-item">
-      <mat-icon>person</mat-icon>
-      Profile
-    </div>
+      <div class="menu-item" (click)="goAnalytics()">
+        📊 Analytics
+      </div>
+
+      <div class="menu-item" (click)="goProfile()">
+        👤 Profile
+      </div>
+
+      <!--<div class="menu-item">
+        ⚙ Settings
+      </div>-->
+      <div class="menu-item" (click)="goSettings()">
+  ⚙ Settings
+</div>
+
+    </nav>
 
   </aside>
 
   <!-- Main Content -->
-  <div class="main-content">
+  <main class="content">
 
-    <!-- Navbar -->
-    <mat-toolbar class="navbar">
-
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <span class="title">
-        Dashboard
-      </span>
-
-      <span class="spacer"></span>
-
-      <button mat-icon-button>
-        <mat-icon>notifications</mat-icon>
-      </button>
-
-      <button mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
-      </button>
-
-    </mat-toolbar>
-
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Top Bar -->
+    <div class="topbar">
 
       <div>
+        <h1>Welcome Back, Geethika 👋</h1>
+        <p>Manage your tasks smarter with AI.</p>
+      </div>
 
-        <h1>
-          Welcome Back, Geethika 👋
-        </h1>
+      <div class="top-actions">
+
+        <div class="notification">
+          🔔
+          <span>3</span>
+        </div>
+
+        <button class="new-task-btn" (click)="createTask()">
+          + New Task
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+
+      <div class="stat-card">
+        <span>Total Tasks</span>
+        <h2>42</h2>
+      </div>
+
+      <div class="stat-card">
+        <span>Completed</span>
+        <h2>30</h2>
+      </div>
+
+      <div class="stat-card">
+        <span>Pending</span>
+        <h2>12</h2>
+      </div>
+
+      <div class="stat-card">
+        <span>Productivity</span>
+        <h2>86%</h2>
+      </div>
+
+    </div>
+
+    <!-- Productivity + AI -->
+    <div class="bottom-grid">
+
+      <div class="panel">
+
+        <h2>Weekly Productivity</h2>
+
+        <div class="bars">
+
+          <div class="bar" style="height:65%">
+            <span>M</span>
+          </div>
+
+          <div class="bar" style="height:90%">
+            <span>T</span>
+          </div>
+
+          <div class="bar" style="height:55%">
+            <span>W</span>
+          </div>
+
+          <div class="bar" style="height:75%">
+            <span>T</span>
+          </div>
+
+          <div class="bar" style="height:85%">
+            <span>F</span>
+          </div>
+
+          <div class="bar" style="height:100%">
+            <span>S</span>
+          </div>
+
+          <div class="bar" style="height:70%">
+            <span>S</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="panel ai-panel">
+
+        <h2>🤖 AI Assistant</h2>
 
         <p>
-          Plan Smarter • Work Faster • Achieve More
+          Generate project plans, task suggestions,
+          reminders and productivity tips instantly.
         </p>
 
-        <button
-          mat-raised-button
-          class="hero-btn">
-
-          Start Planning
-
+        <button class="new-task-btn" (click)="openAIPlanner()">
+          Open AI Planner
         </button>
 
       </div>
 
-      <div class="ai-orb">
+    </div>
+
+    <!-- Recent Tasks -->
+    <div class="panel recent-panel">
+
+      <h2>Recent Tasks</h2>
+
+      <div class="task-list">
+
+        <div class="task">
+          <span>Complete Angular Dashboard UI</span>
+          <small>High Priority</small>
+        </div>
+
+        <div class="task">
+          <span>Create SQL Server Database</span>
+          <small>Medium Priority</small>
+        </div>
+
+        <div class="task">
+          <span>Prepare Internship Report</span>
+          <small>Pending</small>
+        </div>
+
+        <div class="task">
+          <span>Learn Entity Framework</span>
+          <small>Completed</small>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+
+      <div class="action-card">
+        📝
+        <h3>Create Task</h3>
+      </div>
+
+      <div class="action-card">
+        📊
+        <h3>Analytics</h3>
+      </div>
+
+      <div class="action-card">
         🤖
+        <h3>AI Planner</h3>
       </div>
 
-    </section>
-
-    <!-- Statistics -->
-    <div class="stats-section">
-
-      <mat-card class="stat-card">
-
-        <div class="stat-icon">📋</div>
-
-        <h3>Total Tasks</h3>
-
-        <h1>42</h1>
-
-        <p>+12% this week</p>
-
-      </mat-card>
-
-      <mat-card class="stat-card">
-
-        <div class="stat-icon">✅</div>
-
-        <h3>Completed</h3>
-
-        <h1>30</h1>
-
-        <p>+20% this week</p>
-
-      </mat-card>
-
-      <mat-card class="stat-card">
-
-        <div class="stat-icon">⏳</div>
-
-        <h3>Pending</h3>
-
-        <h1>12</h1>
-
-        <p>4 due today</p>
-
-      </mat-card>
-
-      <mat-card class="stat-card">
-
-        <div class="stat-icon">⚡</div>
-
-        <h3>Productivity</h3>
-
-        <h1>86%</h1>
-
-        <p>Excellent</p>
-
-      </mat-card>
-
-    </div>
-
-    <!-- Weekly Productivity -->
-    <div class="chart-container">
-
-      <div class="section-header">
-
-        <h2>📈 Weekly Productivity</h2>
-
-        <span>Last 7 Days</span>
-
-      </div>
-<!-- Bottom Section -->
-    <div class="bottom-grid">
-
-      <mat-card class="panel">
-
-        <div class="chart-card">
-
-        <div class="chart">
-
-          <div class="chart-column">
-            <div class="bar" style="height:65%"></div>
-            <span>Mon</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:85%"></div>
-            <span>Tue</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:55%"></div>
-            <span>Wed</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:95%"></div>
-            <span>Thu</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:75%"></div>
-            <span>Fri</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:100%"></div>
-            <span>Sat</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:80%"></div>
-            <span>Sun</span>
-          </div>
-
-        </div>
-
+      <div class="action-card">
+        📅
+        <h3>Schedule</h3>
       </div>
 
-      </mat-card>
-
-      <mat-card class="panel ai-panel">
-
-        <h2>🤖 AI Assistant</h2>
-
-        <p>Good Morning Geethika!</p>
-
-        <p>You have 4 pending tasks today.</p>
-
-        <p>Productivity Score: 86%</p>
-
-        <button
-          mat-raised-button
-          color="primary">
-
-          Optimize My Day
-
-        </button>
-
-      </mat-card>
-
-    </div>
-      <!--<div class="chart-card">
-
-        <div class="chart">
-
-          <div class="chart-column">
-            <div class="bar" style="height:65%"></div>
-            <span>Mon</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:85%"></div>
-            <span>Tue</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:55%"></div>
-            <span>Wed</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:95%"></div>
-            <span>Thu</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:75%"></div>
-            <span>Fri</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:100%"></div>
-            <span>Sat</span>
-          </div>
-
-          <div class="chart-column">
-            <div class="bar" style="height:80%"></div>
-            <span>Sun</span>
-          </div>
-
-        </div>
-
-      </div>-->
-
     </div>
 
-    <!-- Bottom Section -->
-    <div class="bottom-grid">
-
-      <mat-card class="panel">
-
-        <h2>📋 Recent Tasks</h2>
-
-        <div class="task-item">
-          ✅ Dashboard UI Completed
-        </div>
-
-        <div class="task-item">
-          ✅ SQL Database Designed
-        </div>
-
-        <div class="task-item">
-          ⏳ API Integration
-        </div>
-
-        <div class="task-item">
-          ⏳ AI Planner Module
-        </div>
-
-      </mat-card>
-
-      <mat-card class="panel ai-panel">
-
-        <h2>🤖 AI Assistant</h2>
-
-        <p>Good Morning Geethika!</p>
-
-        <p>You have 4 pending tasks today.</p>
-
-        <p>Productivity Score: 86%</p>
-
-        <button
-          mat-raised-button
-          color="primary">
-
-          Optimize My Day
-
-        </button>
-
-      </mat-card>
-
-    </div>
-
-  </div>
+  </main>
 
 </div>

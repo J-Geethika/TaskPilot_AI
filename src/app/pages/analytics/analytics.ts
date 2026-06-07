@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-analytics',
-  imports: [],
+  standalone: true,
   templateUrl: './analytics.html',
-  styleUrl: './analytics.css',
+  styleUrl: './analytics.css'
 })
-export class Analytics {}
+export class Analytics {
+
+}
