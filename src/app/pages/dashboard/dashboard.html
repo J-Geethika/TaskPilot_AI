@@ -13,25 +13,25 @@
 
     <nav>
 
-      <div class="menu-item active">
-        🏠 Dashboard
-      </div>
+      <div class="menu-item active" (click)="goDashboard()">
+  🏠 Dashboard
+</div>
 
-      <div class="menu-item">
-        ✅ Tasks
-      </div>
+<div class="menu-item" (click)="goTasks()">
+  ✅ Tasks
+</div>
 
-      <div class="menu-item">
-        🤖 AI Planner
-      </div>
+<div class="menu-item" (click)="goPlanner()">
+  🤖 AI Planner
+</div>
 
-      <div class="menu-item">
-        📊 Analytics
-      </div>
+<div class="menu-item" (click)="goAnalytics()">
+  📊 Analytics
+</div>
 
-      <div class="menu-item">
-        👤 Profile
-      </div>
+<div class="menu-item" (click)="goProfile()">
+  👤 Profile
+</div>
 
       <div class="menu-item">
         ⚙ Settings
@@ -49,6 +49,7 @@
 
     <div class="topbar">
 
+      
       <div>
 
         <h1>Welcome Back, Geethika 👋</h1>
@@ -59,9 +60,9 @@
 
       </div>
 
-      <button class="new-task-btn">
-        + New Task
-      </button>
+      <button class="new-task-btn" (click)="createTask()">
+  + New Task
+</button>
 
     </div>
 
@@ -173,8 +174,8 @@
           reminders and productivity suggestions.
         </p>
 
-        <button class="new-task-btn">
-          Open AI Planner
+        <button class="new-task-btn" (click)="openAIPlanner()">
+        Open AI Planner
         </button>
 
       </div>
@@ -209,7 +210,7 @@
 
       </div>
 
-      <!-- AI Assistant -->
+      <!-- AI Assistant
 
       <div class="panel">
 
@@ -224,7 +225,7 @@
           Open AI Planner
         </button>
 
-      </div>
+      </div> -->
 
     </div>
 

@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-ai-planner',
   imports: [],
   templateUrl: './ai-planner.html',
-  styleUrl: './ai-planner.css',
+  styleUrl: './ai-planner.css'
 })
-export class AiPlanner {}
+export class AiPlanner {
+
+}

@@ -1,0 +1,94 @@
+.planner-page{
+    min-height:100vh;
+    background:#f8f7fc;
+    padding:40px;
+}
+
+.planner-header h1{
+    color:#a855f7;
+    font-size:40px;
+}
+
+.planner-header p{
+    color:gray;
+    margin-top:10px;
+}
+
+.planner-card{
+    background:white;
+
+    margin-top:30px;
+
+    padding:30px;
+
+    border-radius:24px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.planner-card textarea{
+    width:100%;
+
+    height:150px;
+
+    margin-top:20px;
+
+    border:none;
+
+    outline:none;
+
+    background:#f8f7fc;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    resize:none;
+}
+
+.generate-btn{
+    margin-top:20px;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:30px;
+
+    color:white;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+      135deg,
+      #a855f7,
+      #ec4899
+    );
+}
+
+.result-card{
+    background:white;
+
+    margin-top:30px;
+
+    padding:30px;
+
+    border-radius:24px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+.week-card{
+    margin-top:20px;
+
+    background:#f3e8ff;
+
+    padding:20px;
+
+    border-radius:15px;
+}
+
+.week-card h3{
+    color:#7c3aed;
+    margin-bottom:10px;
+}
