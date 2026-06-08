@@ -5,7 +5,7 @@
   <div class="bg-circle circle2"></div>
 
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <!--<aside class="sidebar">
 
     <div class="logo">
       🚀 TaskPilot AI
@@ -33,16 +33,52 @@
         👤 Profile
       </div>
 
-      <!--<div class="menu-item">
+      <div class="menu-item">
         ⚙ Settings
-      </div>-->
+      </div>
       <div class="menu-item" (click)="goSettings()">
   ⚙ Settings
 </div>
 
     </nav>
 
+  </aside>-->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="logo">
+      🚀 TaskPilot AI
+    </div>
+
+    <nav>
+
+      <div class="menu-item active" (click)="goDashboard()">
+        🏠 Dashboard
+      </div>
+
+      <div class="menu-item" (click)="goTasks()">
+        🎫 Tickets
+      </div>
+
+      <div class="menu-item" >
+        🤖 AI Planner
+      </div>
+
+      <div class="menu-item">
+        👥 Team
+      </div>
+
+      <div class="menu-item">
+        📅 Calendar
+      </div>
+
+      <div class="menu-item">
+        👤 Profile
+      </div>
+
+    </nav>
+
   </aside>
+
 
   <!-- Main Content -->
   <main class="content">
@@ -51,7 +87,7 @@
     <div class="topbar">
 
       <div>
-        <h1>Welcome Back, Geethika 👋</h1>
+        <h1>Welcome Back, Geethika </h1>
         <p>Manage your tasks smarter with AI.</p>
       </div>
 

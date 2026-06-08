@@ -1,43 +1,140 @@
-<div class="tasks-page">
+<div class="task-container">
 
-  <div class="page-header">
+  <!-- Background Animation -->
 
-    <div>
-      <h1>Task Management</h1>
-      <p>Manage and organize your daily tasks.</p>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- Mobile Menu -->
+
+  <button class="menu-btn" (click)="toggleSidebar()">
+    ☰
+  </button>
+  
+
+  <!-- Sidebar -->
+
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="logo">
+      🚀 TaskPilot AI
     </div>
 
-    <button class="add-btn">
-      + Add Task
+    <nav>
+
+      <div class="menu-item " (click)="goDashboard()">
+        🏠 Dashboard
+      </div>
+
+      <div class="menu-item active" (click)="goTasks()">
+        🎫 Tickets
+      </div>
+
+      <div class="menu-item" >
+        🤖 AI Planner
+      </div>
+
+      <div class="menu-item">
+        👥 Team
+      </div>
+
+      <div class="menu-item">
+        📅 Calendar
+      </div>
+
+      <div class="menu-item">
+        👤 Profile
+      </div>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- Main Content -->
+
+  <main class="content">
+
+
+
+<div class="task-page">
+
+  <div class="task-header">
+
+    <div>
+      <h1>🎫 Ticket Management</h1>
+      <p>Manage, assign and track project tickets</p>
+    </div>
+
+    <button class="create-btn">
+      + Create Ticket
     </button>
 
   </div>
 
-  <!-- Search -->
+  <!-- Filters -->
 
-  <div class="search-box">
+  <div class="filter-section">
+
     <input
       type="text"
-      placeholder="Search tasks..."
-    >
+      placeholder="🔍 Search Ticket..."
+      class="search-box">
+
+    <select class="filter">
+      <option>All Priorities</option>
+      <option>High</option>
+      <option>Medium</option>
+      <option>Low</option>
+    </select>
+
+    <select class="filter">
+      <option>All Status</option>
+      <option>To Do</option>
+      <option>In Progress</option>
+      <option>Testing</option>
+      <option>Done</option>
+    </select>
+
   </div>
 
   <!-- Kanban Board -->
 
   <div class="kanban-board">
 
-    <!-- To Do -->
+    <!-- Todo -->
 
     <div class="column">
 
-      <h2>📌 To Do</h2>
+      <h2>📋 To Do</h2>
 
-      <div class="task-card">
-        Design Dashboard UI
+      <div class="ticket-card">
+        <span class="ticket-id">TK-101</span>
+
+        <h3>Login Page Design</h3>
+
+        <p>Create Angular login UI</p>
+
+        <div class="ticket-footer">
+          <span class="high">High</span>
+          <span>Geethika</span>
+        </div>
+
       </div>
 
-      <div class="task-card">
-        Create API Structure
+      <div class="ticket-card">
+
+        <span class="ticket-id">TK-102</span>
+
+        <h3>Database Setup</h3>
+
+        <p>Create SQL Server tables</p>
+
+        <div class="ticket-footer">
+          <span class="medium">Medium</span>
+          <span>Raja</span>
+        </div>
+
       </div>
 
     </div>
@@ -46,34 +143,127 @@
 
     <div class="column">
 
-      <h2>⚡ In Progress</h2>
+      <h2>🚀 In Progress</h2>
 
-      <div class="task-card">
-        Build Angular Components
-      </div>
+      <div class="ticket-card">
 
-      <div class="task-card">
-        SQL Database Setup
+        <span class="ticket-id">TK-103</span>
+
+        <h3>Dashboard UI</h3>
+
+        <p>Develop dashboard components</p>
+
+        <div class="ticket-footer">
+          <span class="high">High</span>
+          <span>Geethika</span>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- Completed -->
+    <!-- Testing -->
 
     <div class="column">
 
-      <h2>✅ Completed</h2>
+      <h2>🧪 Testing</h2>
 
-      <div class="task-card completed">
-        Project Planning
+      <div class="ticket-card">
+
+        <span class="ticket-id">TK-104</span>
+
+        <h3>Authentication Module</h3>
+
+        <p>Verify login functionality</p>
+
+        <div class="ticket-footer">
+          <span class="medium">Medium</span>
+          <span>Geetha</span>
+        </div>
+
       </div>
 
-      <div class="task-card completed">
-        UI Research
+    </div>
+
+    <!-- Done -->
+
+    <div class="column">
+
+      <h2>✅ Done</h2>
+
+      <div class="ticket-card">
+
+        <span class="ticket-id">TK-105</span>
+
+        <h3>Project Setup</h3>
+
+        <p>Angular environment configured</p>
+
+        <div class="ticket-footer">
+          <span class="low">Low</span>
+          <span>Gopika</span>
+        </div>
+
       </div>
 
     </div>
 
   </div>
+
+  <!-- Recent Tickets -->
+
+  <div class="recent-section">
+
+    <h2>Recent Tickets</h2>
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Assigned To</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>TK-101</td>
+          <td>Login Page Design</td>
+          <td>High</td>
+          <td>To Do</td>
+          <td>Geethika</td>
+        </tr>
+
+        <tr>
+          <td>TK-102</td>
+          <td>Database Setup</td>
+          <td>Medium</td>
+          <td>In Progress</td>
+          <td>Raja</td>
+        </tr>
+
+        <tr>
+          <td>TK-103</td>
+          <td>Dashboard UI</td>
+          <td>High</td>
+          <td>Testing</td>
+          <td>Geetha</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+  </main>
 
 </div>
