@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './calendar.html',
   styleUrl: './calendar.css',
 })
-export class Calendar {}
+export class Calendar {
+
+  constructor(private router: Router) {}
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+}

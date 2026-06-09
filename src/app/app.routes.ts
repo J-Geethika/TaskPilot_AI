@@ -8,6 +8,8 @@ import { Profile } from './pages/profile/profile';
 import { Login } from './pages/login/login';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: Login },
   {
     path: 'dashboard',
     loadComponent: () =>

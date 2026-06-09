@@ -1,6 +1,6 @@
 :root{
-  --primary:#a855f7;
-  --secondary:#ec4899;
+  --primary:#0151a0;
+  --secondary:#ADD8E6;
   --background:#f8f7fc;
   --card:#ffffff;
   --text:#1f2937;
@@ -32,8 +32,8 @@ html{
 .primary-btn{
   background:linear-gradient(
       135deg,
-      #a855f7,
-      #ec4899
+      #0151a0,
+      #ADD8E6
   );
   color:white;
   border:none;
@@ -41,6 +41,7 @@ html{
   border-radius:30px;
   cursor:pointer;
   transition:.3s;
+  font-weight: bold;
 }
 
 .primary-btn:hover{

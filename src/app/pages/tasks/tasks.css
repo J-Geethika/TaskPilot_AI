@@ -28,7 +28,7 @@
 .blob1{
     width:350px;
     height:350px;
-    background:#ec4899;
+    background:#ADD8E6;
     top:50px;
     right:100px;
     animation:float 8s infinite ease-in-out;
@@ -37,7 +37,7 @@
 .blob2{
     width:350px;
     height:350px;
-    background:#8b5cf6;
+    background:#0151a0;
     bottom:50px;
     left:100px;
     animation:float 10s infinite ease-in-out;
@@ -76,9 +76,9 @@
 }
 
 .logo{
-    font-size:24px;
+    font-size:20px;
     font-weight:700;
-    color:#8b5cf6;
+    color:#0151a0;
     margin-bottom:40px;
 }
 
@@ -92,15 +92,15 @@
 }
 
 .menu-item:hover{
-    background:#f3e8ff;
+    background:#e4f8ff;
     transform:translateX(6px);
 }
 
 .active{
     background:linear-gradient(
         135deg,
-        #8b5cf6,
-        #ec4899
+        #0151a0,
+        #ADD8E6
     );
     color:white;
 }
@@ -124,7 +124,7 @@
 
     border-radius:12px;
 
-    background:#8b5cf6;
+    background:#0151a0;
 
     color:white;
 
@@ -187,8 +187,8 @@
 
     background:linear-gradient(
         135deg,
-        #8b5cf6,
-        #ec4899
+        #0151a0,
+        #ADD8E6
     );
 
     transition:.3s;
@@ -257,7 +257,7 @@
 }
 
 .column h2{
-    color:#7c3aed;
+    color:#0151a0;
     margin-bottom:20px;
 }
 
@@ -356,7 +356,7 @@ table{
 }
 
 th{
-    background:#f3e8ff;
+    background:#dee6fa;
     padding:15px;
     text-align:left;
 }
@@ -447,7 +447,7 @@ td{
 }
 
 .stat-card h1{
-    color:#7c3aed;
+    color:#0151a0;
     font-size:35px;
     margin:0;
 }
@@ -482,7 +482,7 @@ td{
 
 .ticket-modal h2{
     text-align:center;
-    color:#7c3aed;
+    color:#0151a0;
 }
 
 .ticket-modal input,
@@ -506,7 +506,7 @@ td{
 }
 
 .save-btn{
-    background:#7c3aed;
+    background:#0151a0;
     color:white;
     border:none;
     padding:12px 20px;

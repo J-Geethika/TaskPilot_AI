@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './team.html',
   styleUrl: './team.css',
 })
-export class Team {}
+export class Team {
+
+  constructor(private router: Router) {}
+
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+}

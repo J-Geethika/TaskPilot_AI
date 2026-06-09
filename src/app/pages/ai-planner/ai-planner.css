@@ -19,7 +19,7 @@
 .circle1{
     width:350px;
     height:350px;
-    background:#ec4899;
+    background:#ADD8E6;
     top:50px;
     right:100px;
     animation:float 8s infinite ease-in-out;
@@ -28,7 +28,7 @@
 .circle2{
     width:350px;
     height:350px;
-    background:#a855f7;
+    background:#0151a0;
     bottom:50px;
     left:100px;
     animation:float 10s infinite ease-in-out;
@@ -63,7 +63,7 @@
 .logo{
     font-size:20px;
     font-weight:700;
-    color:#a855f7;
+    color:#0151a0;
     margin-bottom:40px;
 }
 
@@ -77,15 +77,15 @@
 }
 
 .menu-item:hover{
-    background:#f3e8ff;
+    background:#e4f8ff;
     transform:translateX(6px);
 }
 
 .menu-item.active{
     background:linear-gradient(
         135deg,
-        #a855f7,
-        #ec4899
+        #0151a0,
+        #ADD8E6
     );
     color:white;
 }
@@ -133,7 +133,7 @@
     padding:15px;
     font-size:15px;
     resize:none;
-    background:#f3e8ff;
+    background:#e8f8ff;
     outline:none;
 }
 
@@ -143,8 +143,8 @@
     margin-top:20px;
     background:linear-gradient(
         135deg,
-        #a855f7,
-        #ec4899
+        #0151a0,
+        #ADD8E6
     );
     color:white;
     border:none;
@@ -169,12 +169,12 @@
 }
 
 .result-card h2{
-    color:#a855f7;
+    color:#0151a0;
     margin-bottom:20px;
 }
 
 .week-card{
-    background:#f3e8ff;
+    background:#e8f9ff;
     padding:20px;
     border-radius:14px;
     margin-bottom:15px;
@@ -186,7 +186,7 @@
 }
 
 .week-card h3{
-    color:#a855f7;
+    color:#0151a0;
     margin-bottom:10px;
 }
 

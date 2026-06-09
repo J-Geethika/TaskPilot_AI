@@ -66,6 +66,11 @@ export class Dashboard {
     this.router.navigate(['/tasks']);
   }
 
+  //Log Out Button
+  logout() {
+    this.router.navigate(['/login']);
+  }
+
   // AI Assistant Button
   openAIPlanner() {
     this.router.navigate(['/ai-planner']);

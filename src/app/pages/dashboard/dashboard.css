@@ -17,7 +17,7 @@
 .circle1{
     width:350px;
     height:350px;
-    background:#ec4899;
+    background:#ADD8E6;
     top:50px;
     right:100px;
     animation:float 8s infinite ease-in-out;
@@ -26,7 +26,7 @@
 .circle2{
     width:350px;
     height:350px;
-    background:#a855f7;
+    background:#0151a0;
     bottom:50px;
     left:100px;
     animation:float 10s infinite ease-in-out;
@@ -61,7 +61,7 @@
 .logo{
     font-size:20px;
     font-weight:700;
-    color:#a855f7;
+    color:#0151a0;
     margin-bottom:40px;
 }
 
@@ -75,15 +75,15 @@
 }
 
 .menu-item:hover{
-    background:#f3e8ff;
+    background:#e4f8ff;
     transform:translateX(6px);
 }
 
 .active{
     background:linear-gradient(
         135deg,
-        #a855f7,
-        #ec4899
+        #0151a0,
+        #ADD8E6
     );
     color:white;
 }
@@ -133,7 +133,7 @@
     position:absolute;
     top:-6px;
     right:-10px;
-    background:#ec4899;
+    background:#ADD8E6;
     color:white;
     width:18px;
     height:18px;
@@ -147,8 +147,8 @@
 .new-task-btn{
     background:linear-gradient(
         135deg,
-        #a855f7,
-        #ec4899
+        #0151a0,
+        #ADD8E6
     );
     color:white;
     border:none;
@@ -189,7 +189,7 @@
 
 .stat-card h2{
     margin-top:10px;
-    color:#a855f7;
+    color:#0151a0;
     font-size:34px;
 }
 
@@ -226,8 +226,8 @@
     border-radius:5px 5px 0 0;
     background:linear-gradient(
         180deg,
-        #d6b1fa,
-        #ef69ac
+        #ADD8E6,
+        #0151a0
     );
     animation:grow 1.2s ease;
 }
@@ -270,17 +270,16 @@
     align-items:center;
     padding:16px;
     border-radius:14px;
-    background:#f3e8ff;
+    background:#e8efff;
     margin-bottom:12px;
     transition:.3s;
 }
-
 .task:hover{
     transform:translateX(5px);
 }
 
 .task small{
-    color:#a855f7;
+    color:#0151a0;
     font-weight:600;
 }
 
@@ -342,4 +341,21 @@
         align-items:flex-start;
     }
 
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #dc3545;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-left: 10px;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
 }
