@@ -1,73 +1,111 @@
-<div class="planner-page">
+<div class="planner-container">
 
-  <div class="planner-header">
+  <!-- Sidebar -->
 
-    <h1>🤖 AI Planner</h1>
+  <aside class="sidebar" [class.open]="sidebarOpen">
 
-    <p>
-      Generate smart study plans, project roadmaps and daily schedules.
-    </p>
+    <div class="logo">
+      🚀 TaskPilot AI
+    </div>
 
-  </div>
+    <nav>
 
-  <div class="planner-card">
+      <div class="menu-item" (click)="goDashboard()">
+        🏠 Dashboard
+      </div>
 
-    <h2>What do you want to achieve?</h2>
+      <div class="menu-item" (click)="goTasks()">
+        🎫 Tickets
+      </div>
 
-    <textarea
-      placeholder="Example: Learn Angular in 30 Days">
-    </textarea>
+      <div class="menu-item active" (click)="goPlanner()">
+        🤖 AI Planner
+      </div>
 
-    <button class="generate-btn">
-      Generate Plan
-    </button>
+      <div class="menu-item" (click)="goTeam()">
+        👥 Team
+      </div>
 
-  </div>
+      <div class="menu-item" (click)="goCalendar()">
+        📅 Calendar
+      </div>
 
-  <div class="result-card">
+      <div class="menu-item" (click)="goProfile()">
+        👤 Profile
+      </div>
 
-    <h2>Generated Plan</h2>
+    </nav>
 
-    <div class="week-card">
+  </aside>
 
-      <h3>Week 1</h3>
+  <!-- Mobile Menu -->
+
+  <button class="menu-btn" (click)="toggleSidebar()">
+    ☰
+  </button>
+
+  <!-- Main Content -->
+
+  <main class="planner-content">
+
+    <div class="planner-header">
+
+      <h1>🤖 AI Planner</h1>
 
       <p>
-        Learn Angular Basics, Components and Templates.
+        Generate smart study plans, sprint roadmaps and project schedules.
       </p>
 
     </div>
 
-    <div class="week-card">
+    <div class="planner-card">
 
-      <h3>Week 2</h3>
+      <h2>What do you want to achieve?</h2>
 
-      <p>
-        Routing, Services and Dependency Injection.
-      </p>
+      <textarea
+        rows="5"
+        placeholder="Example: Learn Angular in 30 Days"
+        [(ngModel)]="goal">
+      </textarea>
 
-    </div>
+      <button
+        class="generate-btn"
+        (click)="generatePlan()">
 
-    <div class="week-card">
+        Generate AI Plan
 
-      <h3>Week 3</h3>
-
-      <p>
-        API Integration and Forms.
-      </p>
-
-    </div>
-
-    <div class="week-card">
-
-      <h3>Week 4</h3>
-
-      <p>
-        Project Development and Deployment.
-      </p>
+      </button>
 
     </div>
 
-  </div>
+    <div
+      class="result-card"
+      *ngIf="showPlan">
+
+      <h2>🚀 AI Generated Roadmap</h2>
+
+      <div class="week-card">
+        <h3>Week 1</h3>
+        <p>Learn Angular Basics, Components and Templates.</p>
+      </div>
+
+      <div class="week-card">
+        <h3>Week 2</h3>
+        <p>Routing, Services and Dependency Injection.</p>
+      </div>
+
+      <div class="week-card">
+        <h3>Week 3</h3>
+        <p>Forms, API Integration and State Management.</p>
+      </div>
+
+      <div class="week-card">
+        <h3>Week 4</h3>
+        <p>Build a complete project and deploy it.</p>
+      </div>
+
+    </div>
+
+  </main>
 
 </div>

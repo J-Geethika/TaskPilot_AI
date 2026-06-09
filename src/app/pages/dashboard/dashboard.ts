@@ -71,4 +71,13 @@ export class Dashboard {
     this.router.navigate(['/ai-planner']);
   }
 
+
+  goTeam() {
+  this.router.navigate(['/team']);
+}
+
+goCalendar() {
+  this.router.navigate(['/calendar']);
+}
+
 }
