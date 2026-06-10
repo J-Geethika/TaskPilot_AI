@@ -1,21 +1,153 @@
-<div class="construction-container">
-  <div class="construction-card">
-    
+<div class="profile-container">
 
-    <h1>Page Under Construction</h1>
+  <button class="menu-btn"
+          (click)="toggleSidebar()">
+    ☰
+  </button>
 
-    <p>
-      This module is currently being developed.
-      New features and functionality will be available soon.
-    </p>
+  <aside class="sidebar"
+         [class.open]="sidebarOpen">
 
-    <div class="status">
-      <span></span>
-      Development in Progress
+    <div class="logo">
+      🚀 TaskPilot AI
     </div>
 
-    <button class="dashboard-btn" (click)="goToDashboard()">
-  ← Return to Dashboard
-</button>
-  </div>
+    <nav>
+
+      <div class="menu-item"
+           (click)="goDashboard()">
+        🏠 Dashboard
+      </div>
+
+      <div class="menu-item"
+           (click)="goTasks()">
+        🎫 Tickets
+      </div>
+
+      <div class="menu-item"
+           (click)="goPlanner()">
+        🤖 AI Planner
+      </div>
+
+      <div class="menu-item"
+           (click)="goDocuments()">
+        📁 Documents
+      </div>
+
+      <div class="menu-item active"
+           (click)="goProfile()">
+        👤 Profile
+      </div>
+
+    </nav>
+
+  </aside>
+
+  <main class="content">
+
+    <div class="page-header">
+      <h1>👤 User Profile</h1>
+      <p>Manage your account and productivity overview</p>
+    </div>
+
+    <div class="profile-grid">
+
+      <div class="profile-card">
+
+        <div class="avatar">
+          👤
+        </div>
+
+        <h2>{{user.fullName}}</h2>
+
+        <p>{{user.email}}</p>
+
+        <span class="badge">
+          {{user.userType}}
+        </span>
+
+        <div class="info-row">
+          <strong>Status:</strong>
+          {{user.status}}
+        </div>
+
+        <div class="info-row">
+          <strong>User ID:</strong>
+          {{user.userId}}
+        </div>
+
+        <div class="info-row">
+          <strong>Joined:</strong>
+          {{user.createdAt}}
+        </div>
+
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <h2>{{stats.totalTasks}}</h2>
+          <span>Total Tasks</span>
+        </div>
+
+        <div class="stat-card">
+          <h2>{{stats.completedTasks}}</h2>
+          <span>Completed</span>
+        </div>
+
+        <div class="stat-card">
+          <h2>{{stats.pendingTasks}}</h2>
+          <span>Pending</span>
+        </div>
+
+        <div class="stat-card">
+          <h2>{{stats.documents}}</h2>
+          <span>Documents</span>
+        </div>
+
+        <div class="stat-card">
+          <h2>{{stats.aiTasks}}</h2>
+          <span>AI Plans</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="table-card">
+
+      <h2>Recent Activity Logs</h2>
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Action</th>
+            <th>Details</th>
+            <th>Date</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let log of activityLogs">
+
+            <td>{{log.action}}</td>
+
+            <td>{{log.details}}</td>
+
+            <td>{{log.date}}</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </main>
+
 </div>

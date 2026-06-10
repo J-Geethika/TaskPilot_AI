@@ -5,44 +5,9 @@
   <div class="bg-circle circle2"></div>
 
   <!-- Sidebar -->
-  <!--<aside class="sidebar">
+  
 
-    <div class="logo">
-      🚀 TaskPilot AI
-    </div>
-
-    <nav>
-
-      <div class="menu-item active" (click)="goDashboard()">
-        🏠 Dashboard
-      </div>
-
-      <div class="menu-item" (click)="goTasks()">
-        ✅ Tasks
-      </div>
-
-      <div class="menu-item" (click)="goPlanner()">
-        🤖 AI Planner
-      </div>
-
-      <div class="menu-item" (click)="goAnalytics()">
-        📊 Analytics
-      </div>
-
-      <div class="menu-item" (click)="goProfile()">
-        👤 Profile
-      </div>
-
-      <div class="menu-item">
-        ⚙ Settings
-      </div>
-      <div class="menu-item" (click)="goSettings()">
-  ⚙ Settings
-</div>
-
-    </nav>
-
-  </aside>-->
+   
   <aside class="sidebar" [class.open]="sidebarOpen">
 
     <div class="logo">
@@ -63,12 +28,10 @@
         🤖 AI Planner
       </div>
 
-      <div class="menu-item" (click)="goTeam()">
-        👥 Team
-      </div>
+      
 
-      <div class="menu-item" (click)="goCalendar()">
-        📅 Calendar
+      <div class="menu-item" (click)="goDocuments()">
+        📁 Documents
       </div>
 
       <div class="menu-item" (click)="goProfile()">
@@ -112,22 +75,22 @@
 
       <div class="stat-card">
         <span>Total Tasks</span>
-        <h2>42</h2>
+        <h2>5</h2>
       </div>
 
       <div class="stat-card">
         <span>Completed</span>
-        <h2>30</h2>
+        <h2>1</h2>
       </div>
 
       <div class="stat-card">
         <span>Pending</span>
-        <h2>12</h2>
+        <h2>4</h2>
       </div>
 
       <div class="stat-card">
         <span>Productivity</span>
-        <h2>86%</h2>
+        <h2>30%</h2>
       </div>
 
     </div>
@@ -199,22 +162,22 @@
 
         <div class="task">
           <span>Complete Angular Dashboard UI</span>
-          <small>High Priority</small>
+          <small style = "color: #ff0000;">High Priority</small>
         </div>
 
         <div class="task">
           <span>Create SQL Server Database</span>
-          <small>Medium Priority</small>
+          <small style = "color: #ff6600;">Medium Priority</small>
         </div>
 
         <div class="task">
           <span>Prepare Internship Report</span>
-          <small>Pending</small>
+          <small style = "color: #c4be27;">Pending</small>
         </div>
 
         <div class="task">
           <span>Learn Entity Framework</span>
-          <small>Completed</small>
+          <small style = "color: #00c20d;">Completed</small>
         </div>
 
       </div>

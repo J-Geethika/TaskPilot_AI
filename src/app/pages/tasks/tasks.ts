@@ -50,6 +50,9 @@ export class Tasks {
   goCalendar() {
     this.router.navigate(['/calendar']);
   }
+  goDocuments() {
+    this.router.navigate(['/documents']);
+  }
 
   goProfile() {
     this.router.navigate(['/profile']);

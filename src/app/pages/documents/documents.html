@@ -1,0 +1,244 @@
+<div class="documents-container">
+
+  <!-- Background -->
+
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- Mobile Menu -->
+
+  <button class="menu-btn" (click)="toggleSidebar()">
+    ☰
+  </button>
+
+  <!-- Sidebar -->
+
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="logo">
+      🚀 TaskPilot AI
+    </div>
+
+    <nav>
+
+      <div class="menu-item" (click)="goDashboard()">
+        🏠 Dashboard
+      </div>
+
+      <div class="menu-item" (click)="goTasks()">
+        🎫 Tickets
+      </div>
+
+      <div class="menu-item" (click)="goPlanner()">
+        🤖 AI Planner
+      </div>
+
+      
+
+      <div class="menu-item active" (click)="goDocuments()">
+        📁 Documents
+      </div>
+
+      <div class="menu-item" (click)="goProfile()">
+        👤 Profile
+      </div>
+
+    </nav>
+
+  </aside>
+
+  <!-- Main Content -->
+
+  <main class="content">
+
+    <!-- Header -->
+
+    <div class="page-header">
+
+      <div>
+        <h1>📁 Documents Management</h1>
+        <p>Manage project files, upload documents and access records.</p>
+      </div>
+
+      <button
+        class="upload-btn"
+        (click)="openModal()">
+
+        + Upload Document
+
+      </button>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h2>{{documents.length}}</h2>
+        <span>Total Documents</span>
+      </div>
+
+      <div class="stat-card">
+        <h2>
+          {{documents.filter(d => d.contentType === 'PDF').length}}
+        </h2>
+        <span>PDF Files</span>
+      </div>
+
+      <div class="stat-card">
+        <h2>
+          {{documents.filter(d => d.contentType === 'IMAGE').length}}
+        </h2>
+        <span>Images</span>
+      </div>
+
+      <div class="stat-card">
+        <h2>
+          {{documents.filter(d => d.contentType === 'DOCX').length}}
+        </h2>
+        <span>Documents</span>
+      </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="search-section">
+
+      <input
+        type="text"
+        class="search-box"
+        placeholder="🔍 Search documents..."
+        [(ngModel)]="searchText">
+
+    </div>
+
+    <!-- Documents Table -->
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>ID</th>
+            <th>File Name</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>User ID</th>
+            <th>Actions</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let doc of filteredDocuments()">
+
+            <td>{{doc.documentId}}</td>
+
+            <td>{{doc.fileName}}</td>
+
+            <td>{{doc.contentType}}</td>
+
+            <td>{{doc.fileSize}}</td>
+
+            <td>{{doc.userId}}</td>
+
+            <td>
+
+              <button
+                class="action-btn preview"
+                (click)="previewDocument(doc)">
+                👁
+              </button>
+
+              <button
+                class="action-btn download"
+                (click)="downloadDocument(doc)">
+                ⬇
+              </button>
+
+              <button
+                class="action-btn delete"
+                (click)="deleteDocument(doc.documentId)">
+                🗑
+              </button>
+
+            </td>
+
+          </tr>
+
+          <tr *ngIf="filteredDocuments().length === 0">
+
+            <td colspan="6" class="empty-row">
+              No documents found
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </main>
+
+  <!-- Upload Modal -->
+
+  <div
+    class="modal-overlay"
+    *ngIf="showModal">
+
+    <div class="upload-modal">
+
+      <h2>Upload Document</h2>
+
+      <input
+        type="text"
+        placeholder="File Name"
+        [(ngModel)]="newDocument.fileName">
+
+      <select
+        [(ngModel)]="newDocument.contentType">
+
+        <option value="PDF">PDF</option>
+        <option value="DOCX">DOCX</option>
+        <option value="PPT">PPT</option>
+        <option value="IMAGE">IMAGE</option>
+
+      </select>
+
+      <input
+        type="number"
+        placeholder="User ID"
+        [(ngModel)]="newDocument.userId">
+
+      <div class="modal-buttons">
+
+        <button
+          class="save-btn"
+          (click)="uploadDocument()">
+
+          Upload
+
+        </button>
+
+        <button
+          class="cancel-btn"
+          (click)="closeModal()">
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

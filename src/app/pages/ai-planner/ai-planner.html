@@ -1,5 +1,16 @@
 <div class="planner-container">
 
+  <!-- Background -->
+
+  <div class="bg-circle circle1"></div>
+  <div class="bg-circle circle2"></div>
+
+  <!-- Mobile Menu -->
+
+  <button class="menu-btn" (click)="toggleSidebar()">
+    ☰
+  </button>
+
   <!-- Sidebar -->
 
   <aside class="sidebar" [class.open]="sidebarOpen">
@@ -18,16 +29,12 @@
         🎫 Tickets
       </div>
 
-      <div class="menu-item active" (click)="goPlanner()">
+      <div class="menu-item active">
         🤖 AI Planner
       </div>
 
-      <div class="menu-item" (click)="goTeam()">
-        👥 Team
-      </div>
-
-      <div class="menu-item" (click)="goCalendar()">
-        📅 Calendar
+      <div class="menu-item" (click)="goDocuments()">
+        📁 Documents
       </div>
 
       <div class="menu-item" (click)="goProfile()">
@@ -38,33 +45,32 @@
 
   </aside>
 
-  <!-- Mobile Menu -->
-
-  <button class="menu-btn" (click)="toggleSidebar()">
-    ☰
-  </button>
-
   <!-- Main Content -->
 
   <main class="planner-content">
 
+    <!-- Header -->
+
     <div class="planner-header">
 
-      <h1>🤖 AI Planner</h1>
-
-      <p>
-        Generate smart study plans, sprint roadmaps and project schedules.
-      </p>
+      <div>
+        <h1>🤖 AI Ticket Planner</h1>
+        <p>
+          Generate smart implementation plans and resolution strategies for project tickets.
+        </p>
+      </div>
 
     </div>
 
+    <!-- Planner Input -->
+
     <div class="planner-card">
 
-      <h2>What do you want to achieve?</h2>
+      <h2>Enter Ticket Title</h2>
 
       <textarea
         rows="5"
-        placeholder="Example: Learn Angular in 30 Days"
+        placeholder="Example: Database Setup"
         [(ngModel)]="goal">
       </textarea>
 
@@ -72,36 +78,163 @@
         class="generate-btn"
         (click)="generatePlan()">
 
-        Generate AI Plan
+        🚀 Generate AI Plan
 
       </button>
 
     </div>
 
+    <!-- Generated Plan -->
+
     <div
       class="result-card"
       *ngIf="showPlan">
 
-      <h2>🚀 AI Generated Roadmap</h2>
+      <h2>🚀 AI Generated Resolution Plan</h2>
 
-      <div class="week-card">
-        <h3>Week 1</h3>
-        <p>Learn Angular Basics, Components and Templates.</p>
+      <!-- Summary -->
+
+      <div class="plan-summary">
+
+        <div class="summary-card">
+          <span>🎫 Ticket</span>
+          <h3>Database Setup</h3>
+        </div>
+
+        <div class="summary-card">
+          <span>📅 Estimated Duration</span>
+          <h3>2 Days</h3>
+        </div>
+
+        <div class="summary-card">
+          <span>🔥 Priority</span>
+          <h3>High</h3>
+        </div>
+
       </div>
 
-      <div class="week-card">
-        <h3>Week 2</h3>
-        <p>Routing, Services and Dependency Injection.</p>
-      </div>
+      <!-- Phase 1 -->
 
       <div class="week-card">
-        <h3>Week 3</h3>
-        <p>Forms, API Integration and State Management.</p>
+
+        <h3>📋 Requirement Analysis</h3>
+
+        <p>
+          Review project requirements and database specifications.
+        </p>
+
+        <ul>
+          <li>Identify required entities</li>
+          <li>Define business rules</li>
+          <li>Prepare database architecture</li>
+        </ul>
+
       </div>
 
+      <!-- Phase 2 -->
+
       <div class="week-card">
-        <h3>Week 4</h3>
-        <p>Build a complete project and deploy it.</p>
+
+        <h3>🗄 Database Design</h3>
+
+        <p>
+          Create database structure and relationships.
+        </p>
+
+        <ul>
+          <li>Create Users table</li>
+          <li>Create Tickets table</li>
+          <li>Create Documents table</li>
+          <li>Define primary and foreign keys</li>
+        </ul>
+
+      </div>
+
+      <!-- Phase 3 -->
+
+      <div class="week-card">
+
+        <h3>⚙️ Development</h3>
+
+        <p>
+          Configure backend integration.
+        </p>
+
+        <ul>
+          <li>Create Entity Framework models</li>
+          <li>Configure DbContext</li>
+          <li>Create migrations</li>
+          <li>Update connection string</li>
+        </ul>
+
+      </div>
+
+      <!-- Phase 4 -->
+
+      <div class="week-card">
+
+        <h3>🧪 Testing</h3>
+
+        <p>
+          Validate functionality and performance.
+        </p>
+
+        <ul>
+          <li>Test CRUD operations</li>
+          <li>Verify relationships</li>
+          <li>Check data integrity</li>
+          <li>Perform performance testing</li>
+        </ul>
+
+      </div>
+
+      <!-- Phase 5 -->
+
+      <div class="week-card">
+
+        <h3>✅ Deployment</h3>
+
+        <p>
+          Deploy and monitor the database environment.
+        </p>
+
+        <ul>
+          <li>Deploy database scripts</li>
+          <li>Verify production connection</li>
+          <li>Generate documentation</li>
+          <li>Close ticket</li>
+        </ul>
+
+      </div>
+
+      <!-- AI Recommendations -->
+
+      <div class="week-card">
+
+        <h3>🤖 AI Recommendation</h3>
+
+        <p>
+          Create indexes on frequently queried columns and maintain proper foreign key constraints to improve performance and scalability.
+        </p>
+
+      </div>
+
+      <!-- Actions -->
+
+      <div class="planner-actions">
+
+        <button class="save-btn">
+          💾 Save Plan
+        </button>
+
+        <button
+          class="clear-btn"
+          (click)="showPlan = false">
+
+          ❌ Clear
+
+        </button>
+
       </div>
 
     </div>
@@ -109,3 +242,4 @@
   </main>
 
 </div>
+```

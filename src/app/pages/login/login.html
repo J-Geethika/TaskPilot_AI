@@ -5,33 +5,164 @@
 
   <div class="hero-section">
 
-    <h1>TaskPilot AI</h1>
+    <h1>🚀 TaskPilot AI</h1>
 
     <p>
       AI Powered Productivity Platform
     </p>
 
+    
+
   </div>
 
-  <div class="login-card glass">
+  <div class="login-card">
 
     <h2>Welcome Back</h2>
 
     <input
       type="email"
-      placeholder="Email"
-    >
+      placeholder="Email Address"
+      [(ngModel)]="email">
 
     <input
       type="password"
       placeholder="Password"
-    >
+      [(ngModel)]="password">
 
     <button
-      class="primary-btn"
-      routerLink="/dashboard">
+      class="login-btn"
+      (click)="login()">
+
       Login
+
     </button>
+
+    <div class="bottom-links">
+
+      <span
+        class="link"
+        (click)="showRegister=true">
+
+        Register
+
+      </span>
+
+      <span
+        class="link"
+        (click)="showForgot=true">
+
+        Forgot Password?
+
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Register Modal -->
+
+<div
+  class="modal-overlay"
+  *ngIf="showRegister">
+
+  <div class="modal-card">
+
+    <h2>Create Account</h2>
+
+    <input
+      type="text"
+      placeholder="Full Name"
+      [(ngModel)]="registerData.fullName">
+
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="registerData.email">
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="registerData.password">
+
+    <select
+      [(ngModel)]="registerData.userType">
+
+      <option [value]="1">
+        User
+      </option>
+
+      <option [value]="2">
+        Admin
+      </option>
+
+    </select>
+
+    <div class="modal-buttons">
+
+      <button
+        class="save-btn"
+        (click)="register()">
+
+        Register
+
+      </button>
+
+      <button
+        class="cancel-btn"
+        (click)="showRegister=false">
+
+        Cancel
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Forgot Password Modal -->
+
+<div
+  class="modal-overlay"
+  *ngIf="showForgot">
+
+  <div class="modal-card">
+
+    <h2>Password Reset Request</h2>
+
+    <input
+      type="email"
+      placeholder="Registered Email"
+      [(ngModel)]="forgotEmail">
+
+    <textarea
+      rows="4"
+      placeholder="Reason"
+      [(ngModel)]="resetReason">
+    </textarea>
+
+    <div class="modal-buttons">
+
+      <button
+        class="save-btn"
+        (click)="sendResetRequest()">
+
+        Send Request
+
+      </button>
+
+      <button
+        class="cancel-btn"
+        (click)="showForgot=false">
+
+        Cancel
+
+      </button>
+
+    </div>
 
   </div>
 

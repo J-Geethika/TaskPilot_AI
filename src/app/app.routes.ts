@@ -39,10 +39,10 @@ export const routes: Routes = [
   },
 
   {
-    path: 'calendar',
+    path: 'documents',
     loadComponent: () =>
-      import('./pages/calendar/calendar')
-      .then(m => m.Calendar)
+      import('./pages/documents/documents')
+      .then(m => m.Documents)
   },
 
   {

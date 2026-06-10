@@ -44,8 +44,8 @@ export class AiPlanner {
     this.router.navigate(['/team']);
   }
 
-  goCalendar() {
-    this.router.navigate(['/calendar']);
+  goDocuments() {
+    this.router.navigate(['/documents']);
   }
 
   goProfile() {
