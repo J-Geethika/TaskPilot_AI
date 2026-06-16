@@ -20,18 +20,20 @@
     <h2>Welcome Back</h2>
 
     <input
-      type="email"
-      placeholder="Email Address"
-      [(ngModel)]="email">
+  type="email"
+  name="email"
+  placeholder="Email Address"
+  [(ngModel)]="email">
 
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="password">
+<input
+  type="password"
+  name="password"
+  placeholder="Password"
+  [(ngModel)]="password">
 
     <button
       class="login-btn"
-      (click)="login()">
+      (click)="onLogin()">
 
       Login
 
