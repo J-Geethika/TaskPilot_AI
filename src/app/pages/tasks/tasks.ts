@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { TaskService } from '../../shared/services/task';
 @Component({
   selector: 'app-tasks',
   standalone: true,
@@ -13,10 +13,23 @@ import { Router } from '@angular/router';
   templateUrl: './tasks.html',
   styleUrls: ['./tasks.css']
 })
-export class Tasks {
+export class Tasks implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private taskService: TaskService) {}
 
+  ngOnInit() {
+    this.loadTasks();
+  }
+  loadTasks() {
+    this.taskService.getAllTasks().subscribe({
+      next: (data : any) => {
+        this.tickets = data;
+      },
+      error: (error) =>  {
+        console.log(error);
+      }
+    });
+  }
   // ======================
   // Sidebar
   // ======================
@@ -85,12 +98,13 @@ export class Tasks {
   // ======================
 
   newTicket = {
-    title: '',
-    description: '',
-    priority: 'Medium',
-    status: 'To Do',
-    assignedTo: ''
-  };
+  title: '',
+  description: '',
+  dueDate: '',
+  priority: 'Medium',
+  status: 'To Do',
+  assignedToUserId: 1
+};
 
   // ======================
   // Ticket Data
@@ -146,34 +160,33 @@ export class Tasks {
   addTicket() {
 
     if (
-      this.newTicket.title.trim() === '' ||
-      this.newTicket.assignedTo.trim() === ''
-    ) {
+  this.newTicket.title.trim() === ''
+) {
       alert('Please fill all required fields');
       return;
     }
 
-    const newId =
-      'TK-' + (100 + this.tickets.length + 1);
+    this.taskService.createTask(this.newTicket).subscribe({
+      next  :(response) => {
+        alert('Task created successfully');
+        this.newTicket = {
+          title: '',
+          description: '',
+          dueDate: '',
+          priority: 'Medium',
+          status: 'To Do',
+          assignedToUserId: 1 
+        };
+        this.closeModal();
+      },
+      error:(error)=>{
+        console.log(error);
+        alert('Error creating task'); 
+      }
+        });
 
-    this.tickets.unshift({
-      id: newId,
-      title: this.newTicket.title,
-      description: this.newTicket.description,
-      priority: this.newTicket.priority,
-      status: this.newTicket.status,
-      assignedTo: this.newTicket.assignedTo
-    });
+   
 
-    this.newTicket = {
-      title: '',
-      description: '',
-      priority: 'Medium',
-      status: 'To Do',
-      assignedTo: ''
-    };
-
-    this.closeModal();
   }
 
   // ======================
