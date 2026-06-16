@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../../shared/services/shared/services/auth';
+//import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class Login {
 
-  constructor(private router: Router) {}
+  //constructor(private router: Router) {}
 
   email = '';
   password = '';
@@ -28,27 +29,20 @@ export class Login {
     email: '',
     password: '',
     userType: 1
+
   };
 
   forgotEmail = '';
   resetReason = '';
 
-  login() {
+   constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-    if (!this.email || !this.password) {
-      alert('Please enter Email and Password');
-      return;
-    }
+  
 
-    console.log('Login', {
-      email: this.email,
-      password: this.password
-    });
-
-    this.router.navigate(['/dashboard']);
-  }
-
-  register() {
+  /*register() {
 
     if (
       !this.registerData.fullName ||
@@ -90,5 +84,92 @@ export class Login {
     this.showForgot = false;
     this.forgotEmail = '';
     this.resetReason = '';
+  }*/
+  isValidEmail(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+
+  isStrongPassword(password: string): boolean {
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordPattern.test(password);
+  }
+  onLogin(){
+
+    if (!this.email || !this.password) {
+      alert('Please enter Email and Password');
+      return;
+    }
+    /*if (!this.isValidEmail(this.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (!this.isStrongPassword(this.password)) {
+      alert('Password must be at least 8 characters long and include uppercase, lowercase, number, and special character');
+      return;
+    }
+
+*/
+    const credential = {
+      email: this.email,
+      password: this.password
+  };
+  console.log("Sending to API:", credential);
+  this.authService.login(credential).subscribe(
+    (res:any) => {
+      console.log('Login successful', res);
+      localStorage.setItem('token', res.token);
+      console.log("Login success");
+      this.router.navigate(['/dashboard']);
+    },
+    (err) => {
+      console.error('Login failed', err);
+      alert('Invalid email or password');
+    }
+  );
+  }
+   register() {
+    if(!this.registerData.fullName || !this.registerData.email || !this.registerData.password) {
+      alert('Fill all fields');
+      return;
+    }
+    if(!this.isValidEmail(this.registerData.email)) {
+      alert("Invalid email format");
+      return;
+    }
+    if(!this.isStrongPassword(this.registerData.password)) {
+      alert('Password must be at least 8 characters long and include uppercase, lowercase, number, and special character');
+      return;
+    }
+    const payload = {
+      fullName: this.registerData.fullName,
+      email: this.registerData.email,
+      password: this.registerData.password,
+      userType: this.registerData.userType
+    };
+    console.log('Register payload : ', payload);
+    //alert("Registration Request Submitted");
+this.authService.register(payload).subscribe({
+  next : (res:any) => {
+    console.log('Registration successful', res);
+    alert('Registration successful. Please login.');
+
+    this.showRegister = false;
+    this.registerData = {
+      fullName: '',
+      email: '',
+      password: '',
+      userType: 1
+    };
+  }, 
+  error : (err)=>{
+    console.error('Registration failed', err);
+    alert(err.error || "User already exists or server error");
+  }
+
+});
+}
+  sendResetRequest() {
+    console.log('Reset Request', this.forgotEmail);
   }
 }

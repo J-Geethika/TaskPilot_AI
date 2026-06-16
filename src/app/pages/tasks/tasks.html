@@ -358,9 +358,13 @@
       </select>
 
       <input
-        type="text"
-        placeholder="Assigned To"
-        [(ngModel)]="newTicket.assignedTo">
+  type="number"
+  placeholder="Assigned User Id"
+  [(ngModel)]="newTicket.assignedToUserId">
+
+  <input
+  type="date"
+  [(ngModel)]="newTicket.dueDate">
 
       <div class="modal-buttons">
 
