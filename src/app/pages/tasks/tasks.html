@@ -143,7 +143,7 @@
             *ngFor="let ticket of getTodoTickets()">
 
             <span class="ticket-id">
-              {{ticket.id}}
+              {{ticket.taskId}}
             </span>
 
             <h3>{{ticket.title}}</h3>
@@ -180,7 +180,7 @@
             *ngFor="let ticket of getInProgressTickets()">
 
             <span class="ticket-id">
-              {{ticket.id}}
+              {{ticket.taskId}}
             </span>
 
             <h3>{{ticket.title}}</h3>
@@ -217,8 +217,8 @@
             *ngFor="let ticket of getTestingTickets()">
 
             <span class="ticket-id">
-              {{ticket.id}}
-            </span>
+              {{ticket.taskId}}
+            </span> 
 
             <h3>{{ticket.title}}</h3>
 
@@ -254,7 +254,7 @@
             *ngFor="let ticket of getDoneTickets()">
 
             <span class="ticket-id">
-              {{ticket.id}}
+              {{ticket.taskId}}
             </span>
 
             <h3>{{ticket.title}}</h3>
@@ -306,7 +306,7 @@
 
             <tr *ngFor="let ticket of filteredTickets()">
 
-              <td>{{ticket.id}}</td>
+              <td>{{ticket.taskId}}</td>
               <td>{{ticket.title}}</td>
               <td>{{ticket.priority}}</td>
               <td>{{ticket.status}}</td>
