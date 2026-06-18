@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class TaskService {
 
-  apiUrl = 'http://localhost:5298/api/tasks';
+  apiUrl = 'https://localhost:44329/api/tasks';
 
   constructor(private http: HttpClient) {}
 
@@ -17,9 +17,9 @@ export class TaskService {
     );
   }
 
-  getAllTasks() {
+  /*getAllTasks() {
 
-  /*let token = '';
+  let token = '';
 
   if (typeof window !== 'undefined') {
     token = localStorage.getItem('token') || '';
@@ -33,6 +33,20 @@ export class TaskService {
       }
     }
   );
-}*/
- return this.http.get(`${this.apiUrl}/getall`);}
+}
+ return this.http.get(`${this.apiUrl}/getall`);}*/
+
+getAllTasks() {
+  if (typeof localStorage !== 'undefined') {
+    const token = localStorage.getItem('token');
+
+    return this.http.get(this.apiUrl, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  return this.http.get(this.apiUrl);
+}
 }

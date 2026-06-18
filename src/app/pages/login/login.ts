@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/interceptors/auth.services';
+import { error } from 'console';
 //import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
@@ -115,19 +116,20 @@ export class Login {
       password: this.password
   };
   console.log("Sending to API:", credential);
-  this.authService.login(credential).subscribe(
-    (res:any) => {
-      console.log('Login successful', res);
+  this.authService.login(credential).subscribe({
+    next: (res:any) => {
+    alert(res.message);
+
+    if(res.token) {
       localStorage.setItem('token', res.token);
-      console.log("Login success");
       this.router.navigate(['/dashboard']);
-    },
-    (err) => {
-      console.error('Login failed', err);
-      alert('Invalid email or password');
     }
-  );
-  }
+    },
+    error: (err) => {
+      alert(err.error.message );
+    }
+  });
+}
    register() {
     if(!this.registerData.fullName || !this.registerData.email || !this.registerData.password) {
       alert('Fill all fields');

@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Tasks } from './pages/tasks/tasks';
 import { AiPlanner } from './pages/ai-planner/ai-planner';
-import { Analytics } from './pages/analytics/analytics';
+
 import { Profile } from './pages/profile/profile';
 import { Login } from './pages/login/login';
 
@@ -31,12 +31,7 @@ export const routes: Routes = [
       .then(m => m.AiPlanner)
   },
 
-  {
-    path: 'team',
-    loadComponent: () =>
-      import('./pages/team/team')
-      .then(m => m.Team)
-  },
+  
 
   {
     path: 'documents',

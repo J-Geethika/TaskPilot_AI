@@ -22,6 +22,14 @@ export class Tasks implements OnInit {
   // DATA LAYER (SOURCE OF TRUTH)
   // ======================
   tickets: any[] = [];
+  
+  todoTickets: any[] = [];
+  inProgressTickets: any[] = [];
+  testingTickets: any[] = [];
+  doneTickets: any[] = [];
+  filteredTaskList: any[] = [];
+
+totalTickets = 0;
 
   // ======================
   // SEARCH / FILTER
@@ -49,7 +57,7 @@ export class Tasks implements OnInit {
   // ======================
   ngOnInit() {
     this.loadTasks();
-  }
+}
 
   loadTasks() {
     this.taskService.getAllTasks().subscribe({
@@ -57,6 +65,7 @@ export class Tasks implements OnInit {
         console.log("RAW API RESPONSE:", data);
 
         this.tickets = data || [];
+        this.updateTaskView();
 
         console.log("LOADED TICKETS:", this.tickets);
       },
@@ -84,6 +93,35 @@ export class Tasks implements OnInit {
 
       return matchesSearch && matchesPriority && matchesStatus;
     });
+  }
+
+
+
+  updateTaskView(){
+    this.filteredTaskList = this.tickets.filter(ticket => {
+      const matchesSearch =
+        (ticket.title || '').toLowerCase().includes(this.searchText.toLowerCase()) ||
+        (ticket.taskId || '').toString().includes(this.searchText);
+      const matchesPriority =
+        !this.selectedPriority || ticket.priority === this.selectedPriority;
+      const matchesStatus =
+        !this.selectedStatus || ticket.status === this.selectedStatus;
+      return matchesSearch && matchesPriority && matchesStatus;
+    });
+
+    this.todoTickets = this.filteredTaskList.filter(
+      t => (t.status || '').trim().toLowerCase() === 'to do'
+    );
+    this.inProgressTickets = this.filteredTaskList.filter(
+      t => (t.status || '').trim().toLowerCase() === 'in progress'
+    );
+    this.testingTickets = this.filteredTaskList.filter(
+      t => (t.status || '').trim().toLowerCase() === 'testing'
+    );
+    this.doneTickets = this.filteredTaskList.filter(
+      t => (t.status || '').trim().toLowerCase() === 'done'
+    );
+    this.totalTickets = this.filteredTaskList.length;
   }
 
   // ======================

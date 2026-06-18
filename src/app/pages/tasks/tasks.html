@@ -73,22 +73,22 @@
 
   <div class="stat-card">
     <h3>Total Tickets</h3>
-    <h1>{{tickets.length}}</h1>
+    <h1>{{totalTickets}}</h1>
   </div>
 
   <div class="stat-card">
     <h3>To Do</h3>
-    <h1>{{getTodoTickets().length}}</h1>
+    <h1>{{todoTickets.length}}</h1>
   </div>
 
   <div class="stat-card">
     <h3>In Progress</h3>
-    <h1>{{getInProgressTickets().length}}</h1>
+    <h1>{{inProgressTickets.length}}</h1>
   </div>
 
   <div class="stat-card">
     <h3>Completed</h3>
-    <h1>{{getDoneTickets().length}}</h1>
+    <h1>{{doneTickets.length}}</h1>
   </div>
 
 </div>
@@ -140,7 +140,7 @@
 
           <div
             class="ticket-card"
-            *ngFor="let ticket of getTodoTickets()">
+            *ngFor="let ticket of todoTickets">
 
             <span class="ticket-id">
               {{ticket.taskId}}
@@ -177,7 +177,7 @@
 
           <div
             class="ticket-card"
-            *ngFor="let ticket of getInProgressTickets()">
+            *ngFor="let ticket of inProgressTickets">
 
             <span class="ticket-id">
               {{ticket.taskId}}
@@ -214,7 +214,7 @@
 
           <div
             class="ticket-card"
-            *ngFor="let ticket of getTestingTickets()">
+            *ngFor="let ticket of testingTickets">
 
             <span class="ticket-id">
               {{ticket.taskId}}
@@ -251,7 +251,7 @@
 
           <div
             class="ticket-card"
-            *ngFor="let ticket of getDoneTickets()">
+            *ngFor="let ticket of doneTickets">
 
             <span class="ticket-id">
               {{ticket.taskId}}
@@ -304,7 +304,7 @@
 
           <tbody>
 
-            <tr *ngFor="let ticket of filteredTickets()">
+            <tr *ngFor="let ticket of filteredTaskList">
 
               <td>{{ticket.taskId}}</td>
               <td>{{ticket.title}}</td>
