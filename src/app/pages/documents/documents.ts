@@ -3,6 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+interface DocumentItem {
+  documentId: number;
+  fileName: string;
+  contentType: string;
+  fileSize: string;
+  userId: number;
+  filePath: string;
+}
+
 @Component({
   selector: 'app-documents',
   standalone: true,
@@ -12,46 +21,13 @@ import { Router } from '@angular/router';
 })
 export class Documents {
 
+  // UI STATE LAYER
   sidebarOpen = false;
   showModal = false;
-
-  constructor(private router: Router) {}
-
-  // Sidebar Toggle
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-  }
-
-  // Navigation
-  goDashboard() {
-    this.router.navigate(['/dashboard']);
-  }
-
-  goTasks() {
-    this.router.navigate(['/tasks']);
-  }
-
-  goPlanner() {
-    this.router.navigate(['/ai-planner']);
-  }
-
-  goTeam() {
-    this.router.navigate(['/team']);
-  }
-
-  goDocuments() {
-    this.router.navigate(['/documents']);
-  }
-
-  goProfile() {
-    this.router.navigate(['/profile']);
-  }
-
-  // Search
   searchText = '';
 
-  // Existing Documents
-  documents = [
+  // CORE DATA LAYER
+  documents: DocumentItem[] = [
     {
       documentId: 1,
       fileName: 'ProjectRequirements.pdf',
@@ -78,78 +54,114 @@ export class Documents {
     }
   ];
 
-  // New Document Form
-  newDocument = {
+  // FORM MODEL
+  newDocument: Partial<DocumentItem> = {
     fileName: '',
     contentType: 'PDF',
     fileSize: '',
     userId: 0
   };
 
-  // Open Upload Modal
-  openModal() {
+  constructor(private router: Router) {}
+
+  /* ================= UI CONTROL ================= */
+
+  toggleSidebar(): void {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  openModal(): void {
     this.showModal = true;
   }
 
-  // Close Upload Modal
-  closeModal() {
+  closeModal(): void {
     this.showModal = false;
   }
 
-  // Upload Document
-  uploadDocument() {
+  /* ================= NAVIGATION LAYER ================= */
 
-    if (!this.newDocument.fileName) {
+  goDashboard(): void {
+    this.router.navigate(['/dashboard']);
+  }
+
+  goTasks(): void {
+    this.router.navigate(['/tasks']);
+  }
+
+  goPlanner(): void {
+    this.router.navigate(['/ai-planner']);
+  }
+
+  goTeam(): void {
+    this.router.navigate(['/team']);
+  }
+
+  goDocuments(): void {
+    this.router.navigate(['/documents']);
+  }
+
+  goProfile(): void {
+    this.router.navigate(['/profile']);
+  }
+
+  /* ================= BUSINESS LOGIC ================= */
+
+  uploadDocument(): void {
+
+    if (!this.newDocument.fileName?.trim()) {
       alert('Please enter file name');
       return;
     }
 
-    const newDoc = {
+    const newDoc: DocumentItem = {
       documentId: this.documents.length + 1,
-      fileName: this.newDocument.fileName,
-      contentType: this.newDocument.contentType,
+      fileName: this.newDocument.fileName!,
+      contentType: this.newDocument.contentType || 'PDF',
       fileSize: this.newDocument.fileSize || '1 MB',
-      userId: Number(this.newDocument.userId),
+      userId: Number(this.newDocument.userId || 0),
       filePath: '#'
     };
 
-    this.documents.push(newDoc);
+    this.documents = [...this.documents, newDoc];
 
+    this.resetForm();
+    this.closeModal();
+  }
+
+  resetForm(): void {
     this.newDocument = {
       fileName: '',
       contentType: 'PDF',
       fileSize: '',
       userId: 0
     };
-
-    this.closeModal();
   }
 
-  // Search Filter
-  filteredDocuments() {
+  /* ================= SEARCH OPTIMIZATION ================= */
+
+  filteredDocuments(): DocumentItem[] {
+    const query = this.searchText.toLowerCase().trim();
+
+    if (!query) return this.documents;
+
     return this.documents.filter(doc =>
-      doc.fileName
-        .toLowerCase()
-        .includes(this.searchText.toLowerCase())
+      doc.fileName.toLowerCase().includes(query)
     );
   }
 
-  // Preview
-  previewDocument(doc: any) {
-    alert('Previewing: ' + doc.fileName);
+  /* ================= ACTION LAYER ================= */
+
+  previewDocument(doc: DocumentItem): void {
+    alert(`Previewing: ${doc.fileName}`);
   }
 
-  // Download
-  downloadDocument(doc: any) {
-    alert('Downloading: ' + doc.fileName);
+  downloadDocument(doc: DocumentItem): void {
+    alert(`Downloading: ${doc.fileName}`);
   }
 
-  // Delete
-  deleteDocument(id: number) {
+  deleteDocument(id: number): void {
     if (confirm('Delete this document?')) {
-      this.documents = this.documents.filter(
-        doc => doc.documentId !== id
-      );
+      this.documents = this.documents.filter(d => d.documentId !== id);
     }
   }
 }

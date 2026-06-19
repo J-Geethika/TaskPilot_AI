@@ -24,6 +24,7 @@ export class Dashboard {
 
   sidebarOpen = false;
 
+
   constructor(private router: Router) {}
 
   // Sidebar Toggle

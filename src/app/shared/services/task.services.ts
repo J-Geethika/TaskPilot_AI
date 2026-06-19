@@ -40,11 +40,14 @@ getAllTasks() {
   if (typeof localStorage !== 'undefined') {
     const token = localStorage.getItem('token');
 
-    return this.http.get(this.apiUrl, {
+   return this.http.get(
+    `${this.apiUrl}/getall`,
+    {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    });
+    }
+    );
   }
 
   return this.http.get(this.apiUrl);

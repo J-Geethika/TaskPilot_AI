@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TaskService } from '../../shared/services/task.services';
 
+import { ChangeDetectorRef } from '@angular/core';
+
 @Component({
   selector: 'app-tasks',
   standalone: true,
@@ -12,13 +14,20 @@ import { TaskService } from '../../shared/services/task.services';
   styleUrls: ['./tasks.css']
 })
 export class Tasks implements OnInit {
-
+sidebarOpen = false;
   constructor(
     private router: Router,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private cd: ChangeDetectorRef
   ) {}
 
-  // ======================
+  
+
+  toggleSidebar(){
+  this.sidebarOpen = !this.sidebarOpen;
+  }
+ 
+ // ======================
   // DATA LAYER (SOURCE OF TRUTH)
   // ======================
   tickets: any[] = [];
@@ -65,7 +74,9 @@ totalTickets = 0;
         console.log("RAW API RESPONSE:", data);
 
         this.tickets = data || [];
+        
         this.updateTaskView();
+        this.cd.detectChanges();
 
         console.log("LOADED TICKETS:", this.tickets);
       },
@@ -227,9 +238,5 @@ totalTickets = 0;
   goDocuments() { this.router.navigate(['/documents']); }
   goProfile() { this.router.navigate(['/profile']); }
 
-  sidebarOpen = false;
-
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-  }
+  
 }

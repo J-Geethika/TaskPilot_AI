@@ -72,12 +72,8 @@
 }
 
 .menu-item.active{
-    background:linear-gradient(
-        135deg,
-        #0151a0,
-        #ADD8E6
-    );
-    color:rgb(255, 255, 255);
+    background:linear-gradient(135deg,#0151a0,#ADD8E6);
+    color:white;
 }
 
 /* Content */
@@ -138,11 +134,7 @@
     color:white;
     cursor:pointer;
     font-size:15px;
-    background:linear-gradient(
-        135deg,
-        #0151a0,
-        #ADD8E6
-    );
+    background:linear-gradient(135deg,#0151a0,#ADD8E6);
 }
 
 /* Result Card */
@@ -246,9 +238,33 @@
     display:none;
 }
 
-/* Responsive */
+/* ================= RESPONSIVE INTELLIGENCE LAYER ================= */
 
-@media(max-width:768px){
+/* Tablets & small laptops */
+@media (max-width: 992px){
+
+    .planner-content{
+        padding:30px 20px;
+    }
+
+    .planner-header h1{
+        font-size:28px;
+    }
+
+    .circle1,
+    .circle2{
+        width:250px;
+        height:250px;
+        filter:blur(100px);
+    }
+
+    .sidebar{
+        width:220px;
+    }
+}
+
+/* Tablets / mobile transition */
+@media (max-width:768px){
 
     .menu-btn{
         display:block;
@@ -266,10 +282,11 @@
 
     .sidebar{
         position:fixed;
-        left:-250px;
+        left:-260px;
         top:0;
-        transition:.3s;
+        transition:.3s ease-in-out;
         height:100%;
+        z-index:999;
     }
 
     .sidebar.open{
@@ -281,7 +298,7 @@
     }
 
     .planner-header h1{
-        font-size:28px;
+        font-size:26px;
     }
 
     .plan-summary{
@@ -295,5 +312,45 @@
     .save-btn,
     .clear-btn{
         width:100%;
+    }
+
+    .circle1,
+    .circle2{
+        display:none;
+    }
+}
+
+/* Mobile optimization layer */
+@media (max-width:480px){
+
+    .planner-content{
+        padding:70px 15px 15px;
+    }
+
+    .planner-card,
+    .result-card{
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .planner-header h1{
+        font-size:22px;
+    }
+
+    .planner-header p{
+        font-size:14px;
+    }
+
+    .generate-btn{
+        width:100%;
+    }
+
+    .menu-item{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .logo{
+        font-size:18px;
     }
 }

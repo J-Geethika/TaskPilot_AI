@@ -18,7 +18,7 @@ import { error } from 'console';
 export class Login {
 
   //constructor(private router: Router) {}
-
+  isLoading: boolean = false;
   email = '';
   password = '';
 
@@ -96,6 +96,7 @@ export class Login {
     return passwordPattern.test(password);
   }
   onLogin(){
+     this.isLoading = true;
 
     if (!this.email || !this.password) {
       alert('Please enter Email and Password');
@@ -116,9 +117,12 @@ export class Login {
       password: this.password
   };
   console.log("Sending to API:", credential);
+
+
   this.authService.login(credential).subscribe({
     next: (res:any) => {
-    alert(res.message);
+      
+    this.isLoading = false;
 
     if(res.token) {
       localStorage.setItem('token', res.token);
@@ -126,6 +130,7 @@ export class Login {
     }
     },
     error: (err) => {
+      this.isLoading = false;
       alert(err.error.message );
     }
   });
@@ -155,6 +160,7 @@ this.authService.register(payload).subscribe({
   next : (res:any) => {
     console.log('Registration successful', res);
     alert('Registration successful. Please login.');
+    this.showRegister = false;
 
     this.showRegister = false;
     this.registerData = {
@@ -167,6 +173,7 @@ this.authService.register(payload).subscribe({
   error : (err)=>{
     console.error('Registration failed', err);
     alert(err.error || "User already exists or server error");
+    this.isLoading = false;
   }
 
 });
